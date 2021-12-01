@@ -2,9 +2,9 @@ module.exports = {
   query: JSON.stringify({
     v: 3,
     q: {
-      collection: 'hello',
+      collection: 'names',
       find: {},
-      project: { message: 1 },
+      project: { name: 1 },
       limit: 10
     }
   }, null, 2),

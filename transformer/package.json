@@ -1,7 +1,12 @@
 {
   "main": "index.js",
   "private": true,
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
   "devDependencies": {
+    "jest": "^27.4.3",
     "nodemon": "^2.0.12",
     "standard": "^16.0.3"
   },

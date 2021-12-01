@@ -1,4 +1,4 @@
-# Hello World Protocol
+# Ty's Postboard Protocol
 
 - [Query](./query)
 - [Socket](./socket)
@@ -15,9 +15,17 @@ PUSHDATA | Field
 ---------|---------------------------------
 0        | \`OP_0\` (see [this](https://bitcoinsv.io/2019/07/27/the-return-of-op_return-roadmap-to-genesis-part-4/))
 1        | \`OP_RETURN\`
-2        | Protocol Namespace Address (\`1He11omzQsAeYa2JUj52sFZRQEsSzPFNZx\`)
+2        | Protocol Namespace Address (\`1Fc6HY6Ln6UTTTrjuQsk6BbopX1ZtF2XHh\`)
 3        | Sender ID, which is a base58-encoded BSV address whose private key signed at least one of the inputs of this BSV transaction
-4        | The message to send, with a maximum size of 512 bytes. It can be "hello world", or any other message of your choosing. Note that the message will be public for the world to see, and will be included in the Bitcoin SV blockchain.
+4        | The action to take (see below)
+
+### Send Message
+
+When field 4 is `sendmsg` then ...
+
+### Set Name
+
+When field 4 is `setname` then ...
 
 ## Usage
 

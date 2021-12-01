@@ -1,10 +1,10 @@
 {
   "bridgeport": "0.2.0",
-  "id": "1Prq8NfyBH2mGaGG3jPcbfgH4JXj5aK9sN",
-  "name": "Hello World Protocol",
-  "description": "Create your first simple Bitcoin-powered app",
+  "id": "1Fc6HY6Ln6UTTTrjuQsk6BbopX1ZtF2XHh",
+  "name": "Ty's Postboard Bridge",
+  "description": "Post messages and set a screen name on a public postboard",
   "version": "1.0.0",
-  "repoToken":"pHXlZZTdLtFxrYK5",
+  "repoToken":"L6sROuIC7p7oE9jg",
   "reader": {
     "runtime": "nodejs14",
     "directory": "./reader"
@@ -14,12 +14,12 @@
     "directory": "./transformer"
   },
   "filter": {
-    "startingBlockHeight": 687500,
+    "startingBlockHeight": 715925,
     "find": {
       "out.i": 0,
       "out.o0": "OP_0",
       "out.o1": "OP_RETURN",
-      "out.s2": "1He11omzQsAeYa2JUj52sFZRQEsSzPFNZx"
+      "out.s2": "1Fc6HY6Ln6UTTTrjuQsk6BbopX1ZtF2XHh"
     }
   }
 }
