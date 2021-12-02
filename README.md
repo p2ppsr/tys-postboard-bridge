@@ -1,6 +1,6 @@
-# Hello World Protocol
+# Ty's Postboard Bridge
 
-A simple Bridgeport bridge template
+Post messages and set a screen name on a public postboard
 
 ## License
 

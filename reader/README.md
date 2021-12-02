@@ -3,13 +3,11 @@
 - [Query](./query)
 - [Socket](./socket)
 
-The Hello World Protocol (HWP) is a simple but surprisingly powerful protocol that allows you to send messages and track them on the Bitcoin SV blockchain. This Bridgeport state machine tracks these HWP messages, serving them to anyone who requests them.
-
-We keep track the message senders, and digital signatures ensure that no one can forge a message without authorization.
+Ty's Postboard Protocol allows you to create Bitcoin transactions that ascribe a name to a person who is writing a post, and also track the posts written by that same user ID.
 
 ## Blockchain Data Protocol
 
-Any **Bitcoin SV** transaction where the **first output** contains the fields from the below table complies with the Hello World Protocol, provided that a private key belonging to the address from field 3 has signed **at least one of the inputs** to the transaction. If no funds are in the address, an r-puzzle can be used to achieve a valid input signature.
+Any **Bitcoin SV** transaction where the **first output** contains the fields from the below table complies with Ty's Postboard Protocol, provided that a private key belonging to the address from field 3 has signed **at least one of the inputs** to the transaction. If no funds are in the address, an r-puzzle can be used to achieve a valid input signature.
 
 PUSHDATA | Field
 ---------|---------------------------------
@@ -21,16 +19,25 @@ PUSHDATA | Field
 
 ### Send Message
 
-When field 4 is `sendmsg` then ...
+When field 4 is `sendmsg` then field 5 is the string representing the message, not to exceed 512 bytes.
 
 ### Set Name
 
-When field 4 is `setname` then ...
+When field 4 is `setname` then field 5 is the string representing the user's new name, not to exceed 30 bytes.
 
 ## Usage
 
-When you create a transaction using the protocol, the HWP Bridgeport state machine will collect it and aggregate it into the HWP Bridge database, where it will be made available along with all other HWP messages. When you write queries against this dataset, the documents are in the following format:
+The documents are stored in the MongoDB Bridge Database in the following format:
 
-- **sender**: The Bitcoin SV address from field 3 which signed the HWP message transaction
-- **_id**: The TXID of the HWP transaction
-- **message**: The content that was sent in the HWP message
+### Collection: `messages`
+
+- **userID**: The Bitcoin SV address from field 3 which signed the message transaction
+- **_id**: The TXID of the transaction
+- **message**: The content that was sent in the message
+
+### Collection: `names`
+
+- **_id**: The Bitcoin SV address from field 3 which represents this user identity
+- **name**: The screen name for the user
+- **currentTXID**: The TXID of the currently-active naming transaction
+- **previousVersions**: An array of objects representing previous names of this user. Each object contains `currentTXID` and `name`, and newer names are at the end of the array.
